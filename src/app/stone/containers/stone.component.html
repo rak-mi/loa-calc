@@ -1,29 +1,29 @@
 <div class="container">
-  <h1 class="mat-h1">어빌리티 스톤</h1>
+  <h1 class="mat-h1">Ability Stone</h1>
   <div class="layout">
     <mat-card class="handwork">
       <div class="flex-baseline">
         <mat-form-field class="w-72">
-          <mat-select [ngModel]="na" (ngModelChange)="naChange($event)">
+          <mat-select [ngModel]="na" (ngModelChange)="naChange($event)" class="stone-dropdown">
             <mat-option [value]="i" *ngFor="let i of [6, 7, 8, 9, 10]"
-              >{{ i }}칸</mat-option
+              >{{ i }} Facets</mat-option
             >
           </mat-select>
         </mat-form-field>
         <div class="filler"></div>
-        <button mat-stroked-button (click)="undo()">취소</button>
-        <button mat-stroked-button (click)="reset()">초기화</button>
+        <button mat-stroked-button (click)="undo()">Undo</button>
+        <button mat-stroked-button (click)="reset()">Reset</button>
       </div>
       <table>
         <thead>
           <tr>
-            <th colspan="4">세공 확률 {{ attemptProb | percent: ".0-0" }}</th>
-            <th *ngFor="let prob of probList; index as i">목표 #{{ i + 1 }}</th>
+            <th colspan="4">Faceting Probability {{ attemptProb | percent: ".0-0" }}</th>
+            <th *ngFor="let prob of probList; index as i">Target #{{ i + 1 }}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>증가능력1</td>
+            <td>+ Ability #1</td>
             <td>
               <ng-container *ngFor="let sym of symbols.ability1">
                 <app-stone-symbol
@@ -38,14 +38,14 @@
                 mat-stroked-button
                 (click)="doAttempt('ability1', true)"
               >
-                성공
+                Success
               </button>
               <button
                 *ngIf="mode === 'simulate'"
                 mat-stroked-button
                 (click)="simulateAttempt('ability1')"
               >
-                세공
+                Simulate
               </button>
             </td>
             <td>
@@ -54,7 +54,7 @@
                 mat-stroked-button
                 (click)="doAttempt('ability1', false)"
               >
-                실패
+                Failure
               </button>
             </td>
             <td class="percent-cell" *ngFor="let prob of probList">
@@ -63,7 +63,7 @@
             </td>
           </tr>
           <tr>
-            <td>증가능력2</td>
+            <td>+ Ability #2</td>
             <td>
               <ng-container *ngFor="let sym of symbols.ability2">
                 <app-stone-symbol
@@ -78,14 +78,14 @@
                 mat-stroked-button
                 (click)="doAttempt('ability2', true)"
               >
-                성공
+                Success
               </button>
               <button
                 *ngIf="mode === 'simulate'"
                 mat-stroked-button
                 (click)="simulateAttempt('ability2')"
               >
-                세공
+                Simulate
               </button>
             </td>
             <td>
@@ -94,7 +94,7 @@
                 mat-stroked-button
                 (click)="doAttempt('ability2', false)"
               >
-                실패
+                Failure
               </button>
             </td>
             <td class="percent-cell" *ngFor="let prob of probList">
@@ -103,7 +103,7 @@
             </td>
           </tr>
           <tr>
-            <td>감소능력1</td>
+            <td>- Ability #1</td>
             <td>
               <ng-container *ngFor="let sym of symbols.penalty">
                 <app-stone-symbol
@@ -118,14 +118,14 @@
                 mat-stroked-button
                 (click)="doAttempt('penalty', true)"
               >
-                성공
+                Success
               </button>
               <button
                 *ngIf="mode === 'simulate'"
                 mat-stroked-button
                 (click)="simulateAttempt('penalty')"
               >
-                세공
+                Simualte
               </button>
             </td>
             <td>
@@ -134,7 +134,7 @@
                 mat-stroked-button
                 (click)="doAttempt('penalty', false)"
               >
-                실패
+                Failure
               </button>
             </td>
             <td class="percent-cell" *ngFor="let prob of probList">
@@ -158,7 +158,7 @@
       (remove)="removeTask($event)"
     ></app-stone-goal>
     <button (click)="addTask()" class="button-add" mat-stroked-button>
-      <mat-icon>add</mat-icon><br />목표 추가
+      <mat-icon>add</mat-icon><br />Bonus Goal
     </button>
   </div>
   <div class="layout">
@@ -167,15 +167,15 @@
       <mat-card-content>
         <div>
           <mat-form-field>
-            <mat-label>모드</mat-label>
+            <mat-label>Mode</mat-label>
             <mat-select [(ngModel)]="mode">
-              <mat-option value="select">실전</mat-option>
-              <mat-option value="simulate">시뮬레이션</mat-option>
+              <mat-option value="select">Select</mat-option>
+              <mat-option value="simulate">Simulate</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div>
-          <mat-checkbox [(ngModel)]="showFuture">테이블 상세 표시</mat-checkbox>
+          <mat-checkbox [(ngModel)]="showFuture">Show Additonal Details</mat-checkbox>
         </div>
       </mat-card-content>
     </mat-card>
@@ -183,8 +183,7 @@
       <mat-card-title>About</mat-card-title>
       <mat-card-content>
         <div>
-          로파고 웹버전 제작자(Heehoon Kim)님의 소스를 바탕으로 UI를
-          확장했습니다.
+          Additional Benefits UI based on the source of (Heehoon Kim) web version calculator.
         </div>
         <div>
           Link: <a href="https://heehoon.kim/dolpago">heehoon.kim/dolpago</a>
